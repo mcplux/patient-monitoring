@@ -1,4 +1,13 @@
 <script setup>
+  import { reactive } from 'vue'
+
+  const pet = reactive({
+    name: '',
+    owner: '',
+    email: '',
+    arrival: '',
+    symptoms: '',
+  })
 
 </script>
 
@@ -12,12 +21,13 @@
 
     <form class="bg-white shadow-md rounded-lg py-10 px-5 mb-10">
       <div class="mb-5">
-        <label class="block text-gray-700 uppercase font-bold" for="pet">Pet's name</label>
+        <label class="block text-gray-700 uppercase font-bold" for="name">Pet's name</label>
         <input 
           class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md" 
           type="text" 
-          name="pet" 
-          id="pet"
+          name="name" 
+          id="name"
+          v-model="pet.name"
         />
       </div>
 
@@ -28,6 +38,7 @@
           type="text" 
           name="owner" 
           id="owner"
+          v-model="pet.owner"
         />
       </div>
 
@@ -38,6 +49,7 @@
           type="email" 
           name="email" 
           id="email"
+          v-model="pet.email"
         />
       </div>
 
@@ -48,6 +60,7 @@
           type="date" 
           name="arrival" 
           id="arrival"
+          v-model="pet.arrival"
         />
       </div>
 
@@ -57,6 +70,7 @@
           class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md h-30"
           name="symptoms" 
           id="symptoms"
+          v-model="pet.symptoms"
         />
       </div>
 
