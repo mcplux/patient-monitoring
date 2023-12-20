@@ -1,5 +1,11 @@
 <script setup>
   import { reactive } from 'vue'
+  import Alert from './Alert.vue'
+
+  const alert = reactive({
+    type: '',
+    message: '',
+  })
 
   const pet = reactive({
     name: '',
@@ -8,6 +14,16 @@
     arrival: '',
     symptoms: '',
   })
+
+  const validate = () => {
+    if(Object.values(pet).includes('')) {
+      alert.message = 'All field are required'
+      alert.type = 'error'
+      return
+    }
+
+    console.log('Adding...')
+  }
 
 </script>
 
@@ -19,7 +35,12 @@
       <span class="text-indigo-600 font-bold"> manege them</span>
     </p>
 
-    <form class="bg-white shadow-md rounded-lg py-10 px-5 mb-10">
+    <Alert 
+      v-if="alert.message"
+      :alert="alert"
+    />
+
+    <form @submit.prevent="validate" class="bg-white shadow-md rounded-lg py-10 px-5 mb-10">
       <div class="mb-5">
         <label class="block text-gray-700 uppercase font-bold" for="name">Pet's name</label>
         <input 
