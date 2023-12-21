@@ -15,7 +15,13 @@
   })
 
   const savePatient = () => {
-    patients.value.push(pet)
+    patients.value.push({...pet})
+
+    pet.name = ''
+    pet.owner = ''
+    pet.email = ''
+    pet.arrival = ''
+    pet.symptoms = ''
   }
 </script>
 

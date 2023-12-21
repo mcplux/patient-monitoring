@@ -40,6 +40,13 @@
     }
 
     emit('save-patient')
+    alert.message = 'Patient was added successfully'
+    alert.type = 'success'
+
+    setTimeout(() => {
+      alert.message = ''
+      alert.type = ''
+    }, 2000)
   }
 
 </script>
