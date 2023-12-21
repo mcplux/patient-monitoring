@@ -7,17 +7,34 @@
     message: '',
   })
 
-  const pet = reactive({
-    name: '',
-    owner: '',
-    email: '',
-    arrival: '',
-    symptoms: '',
+  defineEmits(['update:name', 'update:owner', 'update:email', 'update:arrival', 'update:symptoms'])
+
+  const props = defineProps({
+    name: {
+      type: String,
+      required: true,
+    },
+    owner: {
+      type: String,
+      required: true,
+    },
+    email: {
+      type: String,
+      required: true,
+    },
+    arrival: {
+      type: String,
+      required: true,
+    },
+    symptoms: {
+      type: String,
+      required:true,
+    },
   })
 
   const validate = () => {
-    if(Object.values(pet).includes('')) {
-      alert.message = 'All field are required'
+    if(Object.values(props).includes('')) {
+      alert.message = 'All fields are required'
       alert.type = 'error'
       return
     }
@@ -48,7 +65,8 @@
           type="text" 
           name="name" 
           id="name"
-          v-model="pet.name"
+          :value="name"
+          @input="$emit('update:name', $event.target.value)"
         />
       </div>
 
@@ -59,7 +77,8 @@
           type="text" 
           name="owner" 
           id="owner"
-          v-model="pet.owner"
+          :value="owner"
+          @input="$emit('update:owner', $event.target.value)"
         />
       </div>
 
@@ -70,7 +89,8 @@
           type="email" 
           name="email" 
           id="email"
-          v-model="pet.email"
+          :value="email"
+          @input="$emit('update:email', $event.target.value)"
         />
       </div>
 
@@ -81,7 +101,8 @@
           type="date" 
           name="arrival" 
           id="arrival"
-          v-model="pet.arrival"
+          :value="arrival"
+          @input="$emit('update:arrival', $event.target.value)"
         />
       </div>
 
@@ -91,7 +112,8 @@
           class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md h-30"
           name="symptoms" 
           id="symptoms"
-          v-model="pet.symptoms"
+          :value="symptoms"
+          @input="$emit('update:symptoms', $event.target.value)"
         />
       </div>
 
