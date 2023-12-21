@@ -7,7 +7,7 @@
     message: '',
   })
 
-  defineEmits(['update:name', 'update:owner', 'update:email', 'update:arrival', 'update:symptoms'])
+  const emit = defineEmits(['update:name', 'update:owner', 'update:email', 'update:arrival', 'update:symptoms', 'save-patient'])
 
   const props = defineProps({
     name: {
@@ -39,7 +39,7 @@
       return
     }
 
-    console.log('Adding...')
+    emit('save-patient')
   }
 
 </script>
