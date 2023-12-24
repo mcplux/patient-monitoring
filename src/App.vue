@@ -33,10 +33,14 @@
     pet.symptoms = ''
   }
 
-  const updatePatient = (id) => {
+  const updatePatient = id => {
     const patient = patients.value.filter(patient => patient.id === id)[0]
 
     Object.assign(pet, patient)
+  }
+
+  const deletePatient = id => {
+    patients.value = patients.value.filter(patient => patient.id !== id)
   }
 </script>
 
@@ -63,7 +67,12 @@
             <span class="text-indigo-600 font-bold">Patient </span>
             Information
           </p>  
-          <Patient v-for="patient in patients" :patient="patient" @update-patient="updatePatient" />
+          <Patient 
+            v-for="patient in patients" 
+            :patient="patient" 
+            @update-patient="updatePatient" 
+            @delete-patient="deletePatient"
+            />
         </div>
         <p v-else class="mt-20 text-2xl text-center">There are no patients yet</p>
       </div>
