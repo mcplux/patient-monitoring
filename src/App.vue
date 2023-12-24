@@ -1,12 +1,14 @@
 <script setup>
+  import { reactive, ref } from 'vue';
+  import { uid } from 'uid';
   import Header from './components/Header.vue'
   import Form from './components/Form.vue'
   import Patient from './components/Patient.vue'
-  import { reactive, ref } from 'vue';
 
   const patients = ref([])
 
   const pet = reactive({
+    id: null,
     name: '',
     owner: '',
     email: '',
@@ -15,7 +17,7 @@
   })
 
   const savePatient = () => {
-    patients.value.push({...pet})
+    patients.value.push({ ...pet, id: uid() })
 
     pet.name = ''
     pet.owner = ''
