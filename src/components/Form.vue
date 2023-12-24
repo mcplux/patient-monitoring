@@ -1,5 +1,5 @@
 <script setup>
-  import { reactive } from 'vue'
+  import { computed, reactive } from 'vue'
   import Alert from './Alert.vue'
 
   const alert = reactive({
@@ -10,6 +10,10 @@
   const emit = defineEmits(['update:name', 'update:owner', 'update:email', 'update:arrival', 'update:symptoms', 'save-patient'])
 
   const props = defineProps({
+    id: {
+      type: [String, null],
+      required: true,
+    },
     name: {
       type: String,
       required: true,
@@ -40,7 +44,7 @@
     }
 
     emit('save-patient')
-    alert.message = 'Patient was added successfully'
+    alert.message = props.id ? 'Patient was updated successfully' : 'Patient was added successfully'
     alert.type = 'success'
 
     setTimeout(() => {
@@ -49,6 +53,9 @@
     }, 2000)
   }
 
+  const isUpdating = computed(() => {
+    return props.id
+  })
 </script>
 
 <template>
@@ -124,12 +131,11 @@
         />
       </div>
 
-      <button 
+      <input 
         type="submit" 
         class="bg-indigo-600 w-full p-3 text-white font-bold uppercase hover:bg-indigo-700 cursor-pointer transition-colors"
-        >
-        Add patient
-      </button>
+        :value="[isUpdating ? 'Save changes' : 'Add patient']"
+      />
     </form>
 
   </div>
