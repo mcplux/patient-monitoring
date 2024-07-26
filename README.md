@@ -17,7 +17,7 @@ This is a web application to keep track of patients in a veterinary clinic. All 
 - **Tailwind CSS**: For the layout and syling.
 
 ## Usage
-You can access Patient Monitoring from your browser [here](https://main--mellow-pika-867588.netlify.app/)
+You can access Patient Monitoring from your browser [here](https://patient-monitoring.mcplux.com/)
 
 1. Open the link.
 2. Start adding patients.
