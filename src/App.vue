@@ -61,7 +61,7 @@
 </script>
 
 <template>
-  <div class="container mx-auto mt-20">
+  <div class="container mx-auto mt-20 p-5">
     <Header />
 
     <div class="mt-12 md:flex">
